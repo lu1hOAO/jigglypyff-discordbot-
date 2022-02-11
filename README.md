@@ -1,1 +1,1 @@
-# jigglypyff-discordbot-
+# jigglypyff
