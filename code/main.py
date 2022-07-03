@@ -33,10 +33,9 @@ async def 傳圖片(ctx):
     await ctx.send(file=pic)
 
 @bot.command()
-async def 講笑話(ctx):
-    random_pic=random.choice(jdata["pic"])
-    pic=discord.File(random_pic)
-    await ctx.send(file=pic)
+async def 爛笑話(ctx):
+    fun_line=random.choice(jdata["fun"])
+    await ctx.send(fun_line)
 
 @bot.command()
 async def web(ctx):
@@ -51,7 +50,7 @@ async def web(ctx):
 async def 自我介紹(ctx):
     pic=discord.File(jdata["profile_pic"])
     await ctx.send('哈囉我是胖丁\n想要使用指令時請打上嘿胖丁 (嘿胖丁完之後要空一格喔)')
-    await ctx.send('以下是目前指令\n ping： 目前延遲\n 傳圖片：我會傳圖片\n\n\n指令還在增加中喔！')
+    await ctx.send(jdata["profile"])
     await ctx.send(file=pic)
 
 bot.run(jdata['TOKEN'])
