@@ -33,6 +33,12 @@ async def 傳圖片(ctx):
     await ctx.send(file=pic)
 
 @bot.command()
+async def 講笑話(ctx):
+    random_pic=random.choice(jdata["pic"])
+    pic=discord.File(random_pic)
+    await ctx.send(file=pic)
+
+@bot.command()
 async def web(ctx):
     random_pic=random.choice(jdata["url_pic"])
     pic=discord.File(random_pic)
