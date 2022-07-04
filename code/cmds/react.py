@@ -32,6 +32,18 @@ class React(Cog_Extension):
         await ctx.send(embed=embed)
 
     #@commands.command()
+    #async def sayd(self,ctx,*,msg):
+    #    await ctx.message.delete()
+    #    await ctx.send(msg)
+
+    #@commands.command()
+    #async def clean(self,ctx,num:int):
+    #    await ctx.channel.purge(limit=num+1)
+    
+
+
+
+    #@commands.command()
     #async def web(ctx):
     #    random_pic=random.choice(jdata["url_pic"])
     #    pic=discord.File(random_pic)
