@@ -28,7 +28,7 @@ class React(Cog_Extension):
         food_url=jdata[food]
         embed.set_thumbnail(url=food_url)
         embed.add_field(name="今天就吃", value=food, inline=False)
-        embed.set_footer(text="by juggly_puff")
+        embed.set_footer(text="by jiggly_puff")
         await ctx.send(embed=embed)
 
     #@commands.command()
