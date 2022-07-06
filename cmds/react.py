@@ -35,7 +35,12 @@ class React(Cog_Extension):
     @commands.command()
     async def 查天氣(self,ctx,*,city:str):
         url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001"
-        city=city
+        day=0
+        when="今日"
+        if city.startswith("明天"):
+            day=2
+            when="明日"
+            city=city[2:]
         params = {
             "Authorization": jdata["Authorization"],
             "locationName": city
@@ -46,12 +51,12 @@ class React(Cog_Extension):
             data = json.loads(response.text)
             location = data["records"]["location"][0]["locationName"]
             weather_elements = data["records"]["location"][0]["weatherElement"]
-            weather_state = weather_elements[0]["time"][0]["parameter"]["parameterName"]
-            rain_prob = weather_elements[1]["time"][0]["parameter"]["parameterName"]
-            min_tem = weather_elements[2]["time"][0]["parameter"]["parameterName"]
-            comfort = weather_elements[3]["time"][0]["parameter"]["parameterName"]
-            max_tem = weather_elements[4]["time"][0]["parameter"]["parameterName"]
-            embed=discord.Embed(title="天氣資訊", url="https://www.cwb.gov.tw/V8/C/", description="今日天氣",color=0xff4284)
+            weather_state = weather_elements[0]["time"][day]["parameter"]["parameterName"]
+            rain_prob = weather_elements[1]["time"][day]["parameter"]["parameterName"]
+            min_tem = weather_elements[2]["time"][day]["parameter"]["parameterName"]
+            comfort = weather_elements[3]["time"][day]["parameter"]["parameterName"]
+            max_tem = weather_elements[4]["time"][day]["parameter"]["parameterName"]
+            embed=discord.Embed(title="天氣資訊", url="https://www.cwb.gov.tw/V8/C/", description=f"{when}天氣",color=0xff4284)
             embed.add_field(name="城市", value=location, inline=True)
             embed.add_field(name="天氣概況", value=weather_state, inline=True)
             embed.add_field(name="降雨機率", value=rain_prob, inline=True)
