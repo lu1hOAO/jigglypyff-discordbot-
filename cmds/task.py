@@ -8,6 +8,7 @@ from core.classes import Cog_Extension
 class Task(Cog_Extension):
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
+        self.counter=0
         #async def interval():
         #    await self.bot.wait_until_ready()
         #    self.channel=self.bot.get_channel(993036616279003218)
@@ -18,17 +19,20 @@ class Task(Cog_Extension):
 
         async def time_task():
             await self.bot.wait_until_ready()
-            self.channel=self.bot.get_channel(993036616279003218)
+            self.channel=self.bot.get_channel(844922821704417300)
             while not self.bot.is_closed():
                 now_time=datetime.datetime.now().strftime('%H%M')
                 with open('setting.json','r',encoding='utf8') as jfile:
                     jdata=json.load(jfile)
-                if now_time==jdata["time"]:
+                if now_time==jdata["time"] and self.counter==0:
                     await self.channel.send(jdata["good_night"])
                     await self.channel.send("https://reurl.cc/RrZ3rx\n")
-                    await asyncio.sleep(35)#單位 :秒
+                    await asyncio.sleep(10)#單位 :秒
+                    self.counter=1
+                elif now_time =="1020":
+                    self.counter=0
                 else:
-                    await asyncio.sleep(35)#單位 :秒
+                    await asyncio.sleep(10)#單位 :秒
                     pass
         self.bg_task=self.bot.loop.create_task(time_task())
 
