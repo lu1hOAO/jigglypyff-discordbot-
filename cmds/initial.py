@@ -13,9 +13,8 @@ class Initial(Cog_Extension):
 
     @commands.command()
     async def 自我介紹(self,ctx):
-        pic=discord.File(jdata["profile_pic"])
         await ctx.send(jdata["profile"])
-        await ctx.send(file=pic)
+        await ctx.send(jdata["profile_pic"])
 
     #@commands.command()
     #async def hi(self,ctx):
