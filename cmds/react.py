@@ -13,9 +13,19 @@ class React(Cog_Extension):
     @commands.command()
     async def 傳圖片(self,ctx):
         random_pic=random.choice(jdata["pic"])
-        pic=discord.File(random_pic)
         await ctx.send("恭喜獲得我的照片一張\n")
-        await ctx.send(file=pic)
+        await ctx.send(random_pic)
+
+
+#@commands.command()
+    #async def web(ctx):
+    #    random_pic=random.choice(jdata["url_pic"])
+    #    pic=discord.File(random_pic)
+    #    await ctx.send(random_pic)
+#
+#
+#
+#
 
     @commands.command()
     async def 爛笑話(self,ctx):
@@ -82,11 +92,11 @@ class React(Cog_Extension):
 
 
 
-    #@commands.command()
-    #async def web(ctx):
-    #    random_pic=random.choice(jdata["url_pic"])
-    #    pic=discord.File(random_pic)
-    #    await ctx.send(random_pic)
+#    @commands.command()
+#    async def web(ctx,pass_context=True):
+#        random_pic=random.choice(jdata["url_pic"])
+#        pic=discord.File(random_pic)
+#        await ctx.send(random_pic)
 
 def setup(bot):
     bot.add_cog(React(bot))
